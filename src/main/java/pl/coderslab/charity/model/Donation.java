@@ -19,6 +19,8 @@ public class Donation {
 
     @OneToMany
     private List<Category> categories = new ArrayList<>();
+//    @ManyToOne
+//    private Category category;
 
     @OneToOne
     private Institution institution;
@@ -35,6 +37,14 @@ public class Donation {
     private LocalTime pickUpTime;
 
     private String pickUpComment;
+
+//    public Category getCategory() {
+//        return category;
+//    }
+//
+//    public void setCategory(Category category) {
+//        this.category = category;
+//    }
 
     public Long getId() {
         return id;

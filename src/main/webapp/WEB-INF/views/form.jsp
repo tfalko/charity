@@ -5,6 +5,11 @@
   Time: 10:28
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="header.jsp" />
 <div class="slogan container container--90">
     <div class="slogan--item">
@@ -61,8 +66,11 @@
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-
+                <form:form modelAttribute="donation" method="post">
                 <div class="form-group form-group--checkbox">
+                    <form:checkboxes path="categories"
+                                     items="${categories}"/>
+
                     <label>
                         <input
                                 type="checkbox"
@@ -70,9 +78,7 @@
                                 value="clothes-to-use"
                         />
                         <span class="checkbox"></span>
-                        <span class="description"
-                        >ubrania, które nadają się do ponownego użycia</span
-                        >
+                        <span class="description"></span>
                     </label>
                 </div>
 
@@ -277,7 +283,9 @@
                     <button type="submit" class="btn">Potwierdzam</button>
                 </div>
             </div>
+            </form:form>
         </form>
     </div>
 </section>
 <jsp:include page="footer.jsp" />
+<script src="<c:url value="/resources/js/app.js"/>"></script>
