@@ -67,20 +67,25 @@
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <form:form modelAttribute="donation" method="post">
+
+<%--                <form:checkboxes path="categories"--%>
+<%--                                 items="${categories}"/>--%>
+
+                <c:forEach items="${categories}" var="c" varStatus="loopCounter">
                 <div class="form-group form-group--checkbox">
-                    <form:checkboxes path="categories"
-                                     items="${categories}"/>
+
 
                     <label>
                         <input
                                 type="checkbox"
                                 name="categories"
-                                value="clothes-to-use"
+                                value="<c:out value="${c.id}"/>"
                         />
                         <span class="checkbox"></span>
-                        <span class="description"></span>
+                        <span class="description"><c:out value="${c.name}"/></span>
                     </label>
                 </div>
+                    </c:forEach>
 
                 <div class="form-group form-group--checkbox">
                     <label>
@@ -123,6 +128,8 @@
                 </div>
             </div>
 
+
+
             <!-- STEP 2 -->
             <div data-step="2">
                 <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
@@ -130,7 +137,8 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1" />
+<%--                        <form:input path="quantity"/>--%>
+                        <input type="number" name="quantity" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -145,21 +153,22 @@
             <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+                <c:forEach items="${institutions}" var="i" varStatus="loopCounter">
 
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="organization" value="old" />
+                        <input type="radio" name="organization" value="<c:out value="${i.id}"/>" />
                         <span class="checkbox radio"></span>
                         <span class="description">
-                  <div class="title">Fundacja “Bez domu”</div>
+                  <div class="title">Fundacja “<c:out value="${i.name}"/>”</div>
+<%--                            <form:hidden path="institution.id" />--%>
                   <div class="subtitle">
-                    Cel i misja: Pomoc dla osób nie posiadających miejsca
-                    zamieszkania
+                    Cel i misja: <c:out value="${i.description}"/>
                   </div>
                 </span>
                     </label>
                 </div>
-
+                </c:forEach>
                 <div class="form-group form-group--checkbox">
                     <label>
                         <input type="radio" name="organization" value="old" />
@@ -188,7 +197,10 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="address" /> </label>
+                            <label> Ulica
+<%--                                <input type="text" name="address" />--%>
+                                <form:textarea path="street" id="street" />
+                            </label>
                         </div>
 
                         <div class="form-group form-group--inline">
