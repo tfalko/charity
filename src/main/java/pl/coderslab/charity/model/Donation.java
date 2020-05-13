@@ -17,12 +17,12 @@ public class Donation {
 
     private Integer quantity;
 
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Category> categories = new ArrayList<>();
 //    @ManyToOne
 //    private Category category;
 
-    @OneToOne
+    @ManyToOne
     private Institution institution;
 
     private String street;

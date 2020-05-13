@@ -62,11 +62,13 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form action="form-confirmation.html" method="post">
+<%--        <form action="form-confirmation" method="post">--%>
             <!-- STEP 1: class .active is switching steps -->
-            <div data-step="1" class="active">
+
+        <form:form modelAttribute="donation" method="post">
+        <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-                <form:form modelAttribute="donation" method="post">
+
 
 <%--                <form:checkboxes path="categories"--%>
 <%--                                 items="${categories}"/>--%>
@@ -153,6 +155,7 @@
             <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+
                 <c:forEach items="${institutions}" var="i" varStatus="loopCounter">
 
                 <div class="form-group form-group--checkbox">
@@ -198,42 +201,55 @@
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Ulica
-<%--                                <input type="text" name="address" />--%>
-                                <form:textarea path="street" id="street" />
+                                <input type="text" name="street" />
+<%--                                <form:input path="street" id="street" />--%>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="city" /> </label>
-                        </div>
-
-                        <div class="form-group form-group--inline">
-                            <label>
-                                Kod pocztowy <input type="text" name="postcode" />
+                            <label> Miasto
+<%--                                <input type="text" name="city" />--%>
+                                <form:input path="city"/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="phone" />
+                                Kod pocztowy
+<%--                                <input type="text" name="postcode" />--%>
+                                <form:input path="zipCode" id="zipCode" />
                             </label>
                         </div>
+
+<%--                        <div class="form-group form-group--inline">--%>
+<%--                            <label>--%>
+<%--                                (?) Numer telefonu--%>
+<%--                                <input type="phone" name="phone" />--%>
+<%--                            </label>--%>
+<%--                        </div>--%>
                     </div>
 
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="data" /> </label>
+                            <label> Data
+<%--                                <input type="date" name="data" />--%>
+                                <form:input type="date" path="pickUpDate" placeholder="yyyy-mm-dd"/>
+                            </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="time" /> </label>
+                            <label> Godzina
+<%--                                <input type="time" name="time" />--%>
+                                <form:input type="time" path="pickUpTime"/>
+                            </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="more_info" rows="5"></textarea>
+<%--                                <textarea name="more_info" rows="5"></textarea>--%>
+                                <form:textarea path="pickUpComment" rows="5"/>
                             </label>
                         </div>
                     </div>

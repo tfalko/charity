@@ -30,21 +30,28 @@ public class DonationController {
         this.categoryRepository = categoryRepository;
     }
 
-    @RequestMapping(path = "/form", method = RequestMethod.GET)
-    public String showForm(@RequestParam(required = false) Long id, Model model) {
-        Donation donation = id == null ? new Donation() : donationRepository.findById(id).get();
-        model.addAttribute("donation", donation);
+//    @RequestMapping(path = "/form", method = RequestMethod.GET)
+//    public String showForm(@RequestParam(required = false) Long id, Model model) {
+//        Donation donation = id == null ? new Donation() : donationRepository.findById(id).get();
+//        model.addAttribute("donation", donation);
+//
+//        return "form";
+//    }
+
+    @RequestMapping(value = "/form", method = RequestMethod.GET)
+    public String showForm(Model model) {
+        model.addAttribute("donation", new Donation());
         return "form";
     }
 
     @RequestMapping(path = "/form", method = RequestMethod.POST)
-    public String saveForm(@Valid Donation donation, BindingResult result) {
-        if (result.hasErrors()) {
-            return "form";
-        }
+    public String saveForm(@ModelAttribute Donation donation) {
+//        if (result.hasErrors()) {
+//            return "form";
+//        }
 
         donationRepository.save(donation);
-        return "redirect:index";
+        return "redirect:form";
     }
 
     @ModelAttribute("institutions")
