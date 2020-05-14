@@ -14,6 +14,7 @@ import pl.coderslab.charity.repository.CategoryRepository;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -45,13 +46,14 @@ public class DonationController {
     }
 
     @RequestMapping(path = "/form", method = RequestMethod.POST)
-    public String saveForm(@ModelAttribute Donation donation) {
+    public String saveForm(@ModelAttribute Donation donation, HttpSession session) {
 //        if (result.hasErrors()) {
 //            return "form";
 //        }
 
-        donationRepository.save(donation);
-        return "redirect:form";
+        session.setAttribute("donation", donation);
+        //donationRepository.save(donation);
+        return "redirect:form-confirmation";
     }
 
     @ModelAttribute("institutions")

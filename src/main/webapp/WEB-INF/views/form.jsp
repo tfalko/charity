@@ -76,7 +76,6 @@
                 <c:forEach items="${categories}" var="c" varStatus="loopCounter">
                 <div class="form-group form-group--checkbox">
 
-
                     <label>
                         <input
                                 type="checkbox"
@@ -155,11 +154,13 @@
             <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+<%--                <form:select path="institution" items="${institutions}"/>--%>
 
                 <c:forEach items="${institutions}" var="i" varStatus="loopCounter">
-
+                    <form:hidden path="institution.id"/>
                 <div class="form-group form-group--checkbox">
                     <label>
+
                         <input type="radio" name="organization" value="<c:out value="${i.id}"/>" />
                         <span class="checkbox radio"></span>
                         <span class="description">
