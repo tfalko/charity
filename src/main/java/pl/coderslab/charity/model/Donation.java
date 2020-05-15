@@ -22,7 +22,7 @@ public class Donation {
 //    @ManyToOne
 //    private Category category;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Institution institution;
 
     private String street;

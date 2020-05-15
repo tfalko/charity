@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" %>
 <%--
   Created by IntelliJ IDEA.
   User: Falko
@@ -38,14 +39,65 @@
             <li><a href="index.html#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
-
+</header>
     <div class="slogan container container--90">
         <h2>
             Dziękujemy za przesłanie formularza Na maila prześlemy wszelkie
             informacje o odbiorze.
         </h2>
     </div>
-</header>
+<%--        try--%>
+
+    <div class="container">
+        <h3>Podsumowanie Twojej darowizny</h3>
+        <div class="summary">
+            <div class="form-section">
+                <h4>Oddajesz:</h4>
+                <ul>
+                    <li>
+                        <span class="icon icon-bag"></span>
+                        <span class="summary--text"
+                        ><c:out value="${sessionScope.donation.quantity}"/> worki </span
+                        >
+                    </li>
+
+                    <li>
+                        <span class="icon icon-hand"></span>
+                        <span class="summary--text"
+                        >Dla fundacji "<c:out value="${sessionScope.donation.institution.name}"/>"</span
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-section form-section--columns">
+                <div class="form-section--column">
+                    <h4>Adres odbioru:</h4>
+                    <ul>
+                        <li><c:out value="${sessionScope.donation.street}"/></li>
+                        <li><c:out value="${sessionScope.donation.city}"/></li>
+                        <li><c:out value="${sessionScope.donation.zipCode}"/></li>
+                        <li>123 456 789</li>
+                    </ul>
+                </div>
+
+                <div class="form-section--column">
+                    <h4>Termin odbioru:</h4>
+                    <ul>
+                        <li><c:out value="${sessionScope.donation.pickUpDate}"/></li>
+                        <li><c:out value="${sessionScope.donation.pickUpTime}"/></li>
+                        <li><c:out value="${sessionScope.donation.pickUpComment}"/></li>
+                    </ul>
+                </div>
+
+                <a href="/submit">submit</a>
+
+            </div>
+        </div>
+    </div>
+
+
+
 
 <jsp:include page="footer.jsp"/>
 

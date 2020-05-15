@@ -1,5 +1,6 @@
 package pl.coderslab.charity.controller;
 
+import org.aspectj.asm.IModelFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,14 +25,16 @@ public class DonationController {
     DonationRepository donationRepository;
     InstitutionRepository institutionRepository;
     CategoryRepository categoryRepository;
+    HttpSession session;
 
-    public DonationController(DonationRepository donationRepository, InstitutionRepository institutionRepository, CategoryRepository categoryRepository) {
+    public DonationController(DonationRepository donationRepository, InstitutionRepository institutionRepository, CategoryRepository categoryRepository, HttpSession session) {
         this.donationRepository = donationRepository;
         this.institutionRepository = institutionRepository;
         this.categoryRepository = categoryRepository;
+        this.session = session;
     }
 
-//    @RequestMapping(path = "/form", method = RequestMethod.GET)
+    //    @RequestMapping(path = "/form", method = RequestMethod.GET)
 //    public String showForm(@RequestParam(required = false) Long id, Model model) {
 //        Donation donation = id == null ? new Donation() : donationRepository.findById(id).get();
 //        model.addAttribute("donation", donation);
@@ -42,19 +45,45 @@ public class DonationController {
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     public String showForm(Model model) {
         model.addAttribute("donation", new Donation());
+
         return "form";
     }
 
     @RequestMapping(path = "/form", method = RequestMethod.POST)
-    public String saveForm(@ModelAttribute Donation donation, HttpSession session) {
+    public String saveForm(@ModelAttribute Donation donation, HttpSession session, Model model) {
 //        if (result.hasErrors()) {
 //            return "form";
 //        }
 
         session.setAttribute("donation", donation);
+
+
         //donationRepository.save(donation);
         return "redirect:form-confirmation";
     }
+
+    @RequestMapping("/submit")
+    public String submitForm(HttpSession session){
+        Donation donation = (Donation) session.getAttribute("donation");
+        donationRepository.save(donation);
+        session.removeAttribute("donation");
+        return "index";
+    }
+
+
+    @RequestMapping("/form-confirmation")
+    public String confirmation(HttpSession session){
+        session.getAttribute("donation");
+
+        return "form-confirmation";
+    }
+
+//    @ModelAttribute("donation")
+//    public Donation donation(HttpSession session){
+//        return (Donation) session.getAttribute("donation");
+//
+//    }
+
 
     @ModelAttribute("institutions")
     public List<Institution> institutionsList(){
