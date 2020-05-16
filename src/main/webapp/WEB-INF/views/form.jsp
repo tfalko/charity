@@ -157,15 +157,13 @@
 <%--                <form:select path="institution" items="${institutions}"/>--%>
 
                 <c:forEach items="${institutions}" var="i" varStatus="loopCounter">
-                    <form:hidden path="institution.id"/>
                 <div class="form-group form-group--checkbox">
                     <label>
 
-                        <input type="radio" name="organization" value="<c:out value="${i.id}"/>" />
+                        <input type="radio" name="institution.id" value="<c:out value="${i.id}"/>" />
                         <span class="checkbox radio"></span>
                         <span class="description">
                   <div class="title">Fundacja “<c:out value="${i.name}"/>”</div>
-<%--                            <form:hidden path="institution.id" />--%>
                   <div class="subtitle">
                     Cel i misja: <c:out value="${i.description}"/>
                   </div>
@@ -173,19 +171,6 @@
                     </label>
                 </div>
                 </c:forEach>
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="organization" value="old" />
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title">Fundacja “Dla dzieci"</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-                    życiowej.
-                  </div>
-                </span>
-                    </label>
-                </div>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
@@ -265,10 +250,10 @@
             <div data-step="5">
                 <h3>Podsumowanie Twojej darowizny</h3>
 
-<%--                <div class="summary">--%>
-<%--                    <div class="form-section">--%>
-<%--                        <h4>Oddajesz:</h4>--%>
-<%--                        <ul>--%>
+                <div class="summary">
+                    <div class="form-section">
+                        <h4>Oddajesz:</h4>
+                        <ul>
 <%--                            <li>--%>
 <%--                                <span class="icon icon-bag"></span>--%>
 <%--                                <span class="summary--text"--%>
@@ -282,29 +267,29 @@
 <%--                                >Dla fundacji "Mam marzenie" w Warszawie</span--%>
 <%--                                >--%>
 <%--                            </li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
+                        </ul>
+                    </div>
 
-<%--                    <div class="form-section form-section--columns">--%>
-<%--                        <div class="form-section--column">--%>
-<%--                            <h4>Adres odbioru:</h4>--%>
+                    <div class="form-section form-section--columns">
+                        <div class="form-section--column">
+                            <h4>Adres odbioru:</h4>
 <%--                            <ul>--%>
 <%--                                <li>Prosta 51</li>--%>
 <%--                                <li>Warszawa</li>--%>
 <%--                                <li>99-098</li>--%>
 <%--                                <li>123 456 789</li>--%>
 <%--                            </ul>--%>
-<%--                        </div>--%>
+                        </div>
 
-<%--                        <div class="form-section--column">--%>
+                        <div class="form-section--column">
 <%--                            <h4>Termin odbioru:</h4>--%>
 <%--                            <ul>--%>
 <%--                                <li>13/12/2018</li>--%>
 <%--                                <li>15:40</li>--%>
 <%--                                <li>Brak uwag</li>--%>
 <%--                            </ul>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group form-group--buttons">

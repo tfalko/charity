@@ -54,7 +54,7 @@ public class DonationController {
 //        if (result.hasErrors()) {
 //            return "form";
 //        }
-
+        donation.setInstitution(institutionRepository.findById(donation.getInstitution().getId()).get());
         session.setAttribute("donation", donation);
 
 
@@ -65,9 +65,10 @@ public class DonationController {
     @RequestMapping("/submit")
     public String submitForm(HttpSession session){
         Donation donation = (Donation) session.getAttribute("donation");
+
         donationRepository.save(donation);
         session.removeAttribute("donation");
-        return "index";
+        return "redirect:/";
     }
 
 

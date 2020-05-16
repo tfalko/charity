@@ -17,12 +17,12 @@ public class Donation {
 
     private Integer quantity;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany
     private List<Category> categories = new ArrayList<>();
 //    @ManyToOne
 //    private Category category;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Institution institution;
 
     private String street;

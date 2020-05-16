@@ -48,7 +48,7 @@
     </div>
 <%--        try--%>
 
-    <div class="container">
+    <div class="container container--90">
         <h3>Podsumowanie Twojej darowizny</h3>
         <div class="summary">
             <div class="form-section">
@@ -72,7 +72,7 @@
 
             <div class="form-section form-section--columns">
                 <div class="form-section--column">
-                    <h4>Adres odbioru:</h4>
+                    <h3>Adres odbioru:</h3>
                     <ul>
                         <li><c:out value="${sessionScope.donation.street}"/></li>
                         <li><c:out value="${sessionScope.donation.city}"/></li>
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="form-section--column">
-                    <h4>Termin odbioru:</h4>
+                    <h3>Termin odbioru:</h3>
                     <ul>
                         <li><c:out value="${sessionScope.donation.pickUpDate}"/></li>
                         <li><c:out value="${sessionScope.donation.pickUpTime}"/></li>
