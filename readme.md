@@ -1,12 +1,30 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+# Charity-donation project
+
+## General info
+Most people struggle finding reliable and trustworthy ways to donate to charities. The idea behind this project was to create a place where you will be able to donate your unnecessary items to charity. 
 
 
-Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.
-## Jak zacząć?
+## Technologies
+* Spring Boot
+* Spring Form
+* Hibernate
+* Spring Data JPA
+* Spring Security
 
-1. Zaimportuj projekt jako projekt `Maven`, wg poniższych wskazówek:
 
-	* W `IntelliJ` wybieramy: `File –> New –> Project from Existing Sources...`
-	* Wskazujemy lokalizację katalogu ze sklonowanym projektem i zatwierdzamy.
-	* Następnie w nowym oknie wybieramy: `Import project from external model` i wskazujemy `Maven`
-	* Wybieramy kolejno opcje: `Next –> Next –> Next –> Finish`
+## Features
+List of features ready and TODOs for future development
+* Form for submiting donation
+* Form summary 
+* User login/logout
+* statistics with number of donations
+
+To-do list:
+* User profile edition
+* e-mail confirmation
+
+## Status
+Project is: _in progress_
+
+## Contact
+Created by [@tfalko](t.falkowski@hotmail.com) - feel free to contact me!
